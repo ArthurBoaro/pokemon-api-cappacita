@@ -67,8 +67,22 @@ function batalhaPokemon(id1, id2){
     if(pokemon1.hp < 0) pokemon1.hp = 0
     if(pokemon2.hp < 0) pokemon2.hp = 0
 
-    return `${pokemon1.nome}: ${pokemon1.hp} / ${pokemon2.nome}: ${pokemon2.hp}`
+    return `O pokemon ${pokemon1.nome} ficou com ${pokemon1.hp} de HP.\n O pokemon ${pokemon2.nome} ficou com ${pokemon2.hp} de HP.`
 
 }
 
-module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon }
+function curarPokemon(id){
+    const pokemon = pokemons[id]
+    pokemon.hp = pokemon.hp + 20
+    if(pokemon.hp > 100) {
+        pokemon.hp = 100
+        return `O ${pokemon.nome} foi totalmente curado e agora está com vida cheia (${pokemon.hp} HP), portanto não é mais possível curá-lo.`
+    } else {
+        return `O ${pokemon.nome} foi curado em 20 de HP com uma poção e agora está com ${pokemon.hp} HP.`
+    }
+
+}
+
+
+
+module.exports = { salvarPokemons, mostrarPokemon, mostrarPokemons, atualizarPokemon, deletarPokemon, batalhaPokemon, curarPokemon }

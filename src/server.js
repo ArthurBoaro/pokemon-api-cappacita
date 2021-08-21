@@ -38,7 +38,11 @@ app.post('/pokemons', (req, res) => {
 
 app.delete('/pokemons/:id', (req, res) => {
     res.send(dataBase.deletarPokemon(req.params.id))
-   
+});
+
+
+app.get('/curar/:id', (req, res) =>{
+    res.send(dataBase.curarPokemon(req.params.id))
 });
 
 app.post('/batalha', (req, res) => {
